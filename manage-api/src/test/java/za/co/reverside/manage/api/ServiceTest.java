@@ -13,4 +13,5 @@ public class ServiceTest {
         String result = service.getTime();
         assertNotNull(result);
     }
+
 }
