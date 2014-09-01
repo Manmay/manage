@@ -3,6 +3,7 @@ package za.co.reverside.manage.api;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import za.co.reverside.manage.model.Employee;
 
@@ -18,14 +19,18 @@ public class Service {
         return new Date().toString();
     }
 
-    @RequestMapping(value = "api/employee/{id}", method = GET)
+    @RequestMapping(value = "api/employee/{id}", method = RequestMethod.GET)
     public Employee getEmployee(@PathVariable("id") Long id){
         Employee employee = new Employee();
         employee.setId(id);
-        employee.setFirstName("Manmay");
-        employee.setLastName("Mohanty");
-        employee.setEmail("manmay.mohanty@reverside.co.za");
+        employee.setName("Pragati Kumar Prusty");
+        employee.setEmail("pragat.prusty@reverside.co.za");
+        employee.setDesignation(" Consultant");
+        employee.setImgUrl("D:/image");
+        employee.setPhoneNumber(846860904);
+        employee.setUrls("fb/pragati/prusty.123");
         return employee;
     }
+
 
 }
