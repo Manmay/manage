@@ -4,8 +4,12 @@ import lombok.Data;
 
 @Data
 public class Employee {
-    private Long id;
-    private String firstName ;
-    private String lastName;
+
+    private long id;
+    private String name ;
     private String email;
+    private long phoneNumber;
+    private String imgUrl;
+    private String designation;
+    private String urls;
 }
