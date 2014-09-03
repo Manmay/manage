@@ -1,0 +1,3 @@
+- Introduce angular.js into web module (Pragati)
+- Make the profile contents only available on the page with responssivenesss (Soumya)
+- Setup the table and DAO for Employee table
