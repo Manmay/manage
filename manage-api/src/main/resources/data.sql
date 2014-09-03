@@ -1,0 +1,1 @@
+insert into consultant(id, first_name, last_name, designation, email, phone, photo, quote) values(1, 'Manmay', 'Mohanty', 'Consultant', 'manmay.mohanty@reverside.co.za', '0846860904', '/image/manmay-mohanty.jpg', 'I m what I m');
