@@ -41,8 +41,8 @@ public class ServiceTest {
 
     @Test
     public void testGetEmployee() throws IOException {
-        String testData = "{\"id\":1, \"firstName\":\"Pragati\", \"lastName\":\"Prusty\", \"designation\":\"Associate Consultant\", \"email\":\"pragati.prusty@reverside.co.za\", \"phone\":\"0846860904\", \"photo\":\"/image/pragati-prusty.jpg\", \"quote\":\"I m what I m\" }";
-        when(mConsultantRepository.findOne(1L)).thenReturn(new ObjectMapper().readValue(testData.getBytes(), Consultant.class));
+        String data = "{\"id\":1, \"firstName\":\"Pragati\", \"lastName\":\"Prusty\", \"designation\":\"Associate Consultant\", \"email\":\"pragati.prusty@reverside.co.za\", \"phone\":\"0846860904\", \"photo\":\"/image/pragati-prusty.jpg\", \"quote\":\"I m what I m\" }";
+        when(mConsultantRepository.findOne(1L)).thenReturn(new ObjectMapper().readValue(data.getBytes(), Consultant.class));
         Consultant result = service.getConsultant(1L);
         assertEquals(1L, result.getId().longValue());
         assertEquals("Pragati", result.getFirstName());
