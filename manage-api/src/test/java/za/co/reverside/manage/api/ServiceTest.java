@@ -15,6 +15,8 @@ import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.util.ReflectionTestUtils.setField;
 
@@ -40,10 +42,15 @@ public class ServiceTest {
     }
 
     @Test
-    public void testGetEmployee() throws IOException {
+    public void testGetConsultant() throws IOException {
         String data = "{\"id\":1, \"firstName\":\"Pragati\", \"lastName\":\"Prusty\", \"designation\":\"Associate Consultant\", \"email\":\"pragati.prusty@reverside.co.za\", \"phone\":\"0846860904\", \"photo\":\"/image/pragati-prusty.jpg\", \"quote\":\"I m what I m\" }";
+
         when(mConsultantRepository.findOne(1L)).thenReturn(new ObjectMapper().readValue(data.getBytes(), Consultant.class));
+
         Consultant result = service.getConsultant(1L);
+
+        verify(mConsultantRepository, times(1)).getOne(1L);
+
         assertEquals(1L, result.getId().longValue());
         assertEquals("Pragati", result.getFirstName());
         assertEquals("Prusty", result.getLastName());
