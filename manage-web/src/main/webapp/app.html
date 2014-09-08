@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html style="width: 100%;" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Bootstrap Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/ng-flow-standalone.min.js"></script>
+    <!--<script src="lib/upload.js" ></script>-->
+    <script src="js/app.js"></script>
+
+</head>
+
+<body style="padding-top: 50px; padding-left: 0px; padding-right: 0px; background: olivedrab;">
+
+<div role="navigation" class="navbar navbar-inverse navbar-fixed-top">
+    <!-- Brand and toggle get grouped for better mobile display -->
+
+    <div class="navbar-header">
+        <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+
+        <a href="#" class="navbar-brand"><img src="img/brand.jpg" height="20px;"></a>
+
+    </div>
+
+
+    <!-- Collection of nav links, forms, and other content for toggling -->
+    <div id="navbarCollapse" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Profile</a></li>
+            <li class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#">Applications <b class="caret"></b></a>
+                <ul role="menu" class="dropdown-menu">
+                    <li><a href="#">Inbox</a></li>
+                    <li><a href="#">Drafts</a></li>
+                    <li><a href="#">Sent Items</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Trash</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Login</a></li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="container-fluid" style="" ng-controller="EmployeeController">
+
+    <div class="row-fluid">
+
+        <div class="col-md-12 text-center">
+            <br/>
+            <textarea placeholder="Full Name" ng-disabled="!editable"  style="width: 100%;color: #ffffff; outline: none; background-color: transparent; border-color: transparent; text-align: center; font-size : 24px; text-transform: uppercase; font-family: Georgia; font-weight: bold;" ng-model="employee.fullName"></textarea>
+            <img onclick="document.getElementById('upload').click()" ng-src="{{employee.photo}}" style="  border-radius: 50% 50% 50% 50%; width: 240px; height: 240px;"/><br>
+            <input id="upload" style="display: none;" type="file" ng-file-select /><br>
+            <input placeholder="Designation" ng-disabled="!editable" style="width: 100%;color: #ffffff; outline: none; background-color: transparent; border-color: transparent; text-align: center; font-size: 24px; font-family: 'Open Sans'; font-weight: bold;" ng-model="employee.designation"/><br>
+            <input type="tel" placeholder="Phone" ng-disabled="!editable" style="width: 100%;color: #ffffff; outline: none; background-color: transparent; border-color: transparent; text-align: center; font-size: 14px; line-height: 16px; font-family: 'Open Sans';  font-style: normal; font-weight: bold;" ng-model="employee.phone"/>
+            <input type="email" placeholder="Email" ng-disabled="!editable" style="width: 100%;color: #ffffff; outline: none; background-color: transparent; border-color: transparent; text-align: center; font-size: 14px; line-height: 16px; font-family: 'Open Sans';  font-style: normal; font-weight: bold;" ng-model="employee.email"/>
+            <input disabled type="text" style="height: 48px; width: 48px; text-align: center; font-size: 30px;" ng-value="{{employee.score[0]}}"/>
+            <input disabled type="text" style="height: 48px; width: 48px; text-align: center; font-size: 30px;" ng-value="{{employee.score[1]}}"/>
+            <input disabled type="text" style="height: 48px; width: 48px; text-align: center; font-size: 30px;" ng-value="{{employee.score[2]}}"/>
+            <input disabled type="text" style="height: 48px; width: 48px; text-align: center; font-size: 30px;" ng-value="{{employee.score[3]}}"/>
+            <br>
+            <textarea spellcheck="false" placeholder="About Me" cols="30" rows="3" ng-disabled="!editable" style="color: #ffff00; outline: none; background-color: transparent; border-color: transparent; text-align: center;  font-size: 16px; font-family: 'Open Sans';  font-style: italic;" ng-model="employee.quote"></textarea>
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>                                		
