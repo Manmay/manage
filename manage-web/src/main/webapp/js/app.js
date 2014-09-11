@@ -1,9 +1,18 @@
-/**
- * Created by f4789334 on 2014/09/05.
- */
 
+var app = angular.module('app', ['ngRoute']);
 
-var app = angular.module('app', []);
+app.config(['$routeProvider',
+    function ($routeProvider) {
+        $routeProvider
+            .when('/employee', {
+                'templateUrl': 'html/employee.html',
+                'controller': 'EmployeeController'
+            })
+            .when('/employee/:id', {
+                'templateUrl': 'html/employee.html',
+                'controller': 'EmployeeController'
+            });
+    }]);
 
 app.directive("ngFileSelect", function () {
     return {
@@ -16,18 +25,32 @@ app.directive("ngFileSelect", function () {
     }
 });
 
-app.controller('EmployeeController', ['$scope', function ($scope, fileReader) {
+app.controller('EmployeeController', function ($scope, $routeParams) {
 
-    $scope.editable = true;
+    $scope.mode ;
 
-    $scope.employee = {
-        "fullName": "Soumya Pattanaik",
-        "designation": "Associate Consultant",
-        "email": "soumya.pattanaik@reverside.co.za",
-        "phone": "+27 749210674",
-        "quote": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac risus nibh. Donec adipiscing luctus tur Lorem ipsum dolor sit amet, consectetur adipiscing eli",
-        "score": "0025",
-        "photo": "user_avatar.jpg"
+    $scope.employee ;
+
+    $scope.init = function(){
+        console.log($routeParams.mode);
+        $scope.mode = $routeParams.mode;
+        if($scope.mode == 'new') {
+            $scope.employee = {
+                "score": "0000",
+                "photo": "img/new-user.jpg"
+            };
+        } else {
+            $scope.employee = {
+                "fullName": "Soumya Pattanaik",
+                "designation": "Associate Consultant",
+                "email": "soumya.pattanaik@reverside.co.za",
+                "phone": "+27 749210674",
+                "quote": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac risus nibh.",
+                "score": "0025",
+                "photo": "user_avatar.jpg"
+            };
+        }
+
     };
 
     $scope.hello = function (file) {
@@ -44,4 +67,4 @@ app.controller('EmployeeController', ['$scope', function ($scope, fileReader) {
         fileReader.readAsDataURL(file);
     };
 
-}]);
+});
