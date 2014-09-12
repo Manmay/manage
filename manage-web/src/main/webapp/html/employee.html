@@ -1,21 +1,62 @@
 <div class="row-fluid" ng-init="init()">
-    <div class="col-md-12 text-center" ng-if="mode!='list'">
-        <button ng-if="mode=='delete'" class="btn-danger">PRESS HERE TO DELETE</button>
+
+    <div ng-if="mode=='search'" class="col-md-12 text-center">
+        <br>
+
+        <div class="input-group">
+            <input type="text" ng-model="searchText" class="form-control text-center" placeholder="Search Employee"/>
+
+            <div class="input-group-btn">
+                <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span></button>
+            </div>
+        </div>
+        <br>
+
+        <div class="panel panel-default">
+            <table class="table table-responsive table-nonfluid table-striped">
+                <tbody ng-repeat="employeex in employees  | filter:searchText">
+
+                <tr style="cursor: pointer;" ng-click="showEmployee(employeex.id)">
+
+                    <td style="text-align: right;">
+                        <img ng-src="{{employeex.photo}}" height="90" width="90" class="img-thumbnail"/>
+                    </td>
+                    <td style="text-align: left;">
+                        <div>
+                            <h4>{{employeex.fullName}}</h4>
+                            <h5>{{employeex.designation}}</h5>
+                            <h6>{{employeex.address.city}}, {{employeex.address.country}}</h6>
+
+                        </div>
+                    </td>
+
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-md-12 text-center" ng-if="mode!='search'">
+        <a ng-href="#/employee/search"><b> Search </b></a>
+        <a ng-href="#/employee/1/edit"><b> Edit </b></a>
+        <a ng-href="#/employee/1/delete"><b> Delete </b></a>
+
         <br/>
         <textarea spellcheck="false" placeholder="Full Name" ng-disabled="mode != 'edit'"
-                  style="width: 100%;color: #ffffff; outline: none; background-color: transparent; border-color: transparent; text-align: center; font-size : 24px; text-transform: uppercase; font-family: Georgia; font-weight: bold;"
+                  style="width: 100%;color: #000000; outline: none; background-color: transparent; border-color: transparent; text-align: center; font-size : 24px; text-transform: uppercase; font-family: Georgia; font-weight: bold;"
                   ng-model="employee.fullName"></textarea>
         <img onclick="document.getElementById('upload').click()" ng-src="{{employee.photo}}"
              style="  border-radius: 50% 50% 50% 50%; width: 240px; height: 240px;"/><br>
         <input id="upload" style="display: none;" type="file" ng-disabled="mode != 'edit'" ng-file-select/><br>
         <input placeholder="Designation" ng-disabled="mode != 'edit'"
-               style="width: 100%;color: #ffffff; outline: none; background-color: transparent; border-color: transparent; text-align: center; font-size: 24px; font-family: 'Open Sans'; font-weight: bold;"
+               style="width: 100%;color: #000000; outline: none; background-color: transparent; border-color: transparent; text-align: center; font-size: 24px; font-family: 'Open Sans'; font-weight: bold;"
                ng-model="employee.designation"/><br>
         <input type="tel" placeholder="Phone" ng-disabled="mode != 'edit'"
-               style="width: 100%;color: #ffffff; outline: none; background-color: transparent; border-color: transparent; text-align: center; font-size: 14px; line-height: 16px; font-family: 'Open Sans';  font-style: normal; font-weight: bold;"
+               style="width: 100%;color: #000000; outline: none; background-color: transparent; border-color: transparent; text-align: center; font-size: 14px; line-height: 16px; font-family: 'Open Sans';  font-style: normal; font-weight: bold;"
                ng-model="employee.phone"/>
         <input type="email" placeholder="Email" ng-disabled="mode != 'edit'"
-               style="width: 100%;color: #ffffff; outline: none; background-color: transparent; border-color: transparent; text-align: center; font-size: 14px; line-height: 16px; font-family: 'Open Sans';  font-style: normal; font-weight: bold;"
+               style="width: 100%;color: #000000; outline: none; background-color: transparent; border-color: transparent; text-align: center; font-size: 14px; line-height: 16px; font-family: 'Open Sans';  font-style: normal; font-weight: bold;"
                ng-model="employee.email"/>
         <input disabled type="text" style="height: 48px; width: 48px; text-align: center; font-size: 30px;"
                ng-value="{{employee.score[0]}}"/>
@@ -27,20 +68,19 @@
                ng-value="{{employee.score[3]}}"/>
         <br>
         <textarea spellcheck="false" placeholder="About Me" cols="30" rows="3" ng-disabled="mode != 'edit'"
-                  style="color: #ffff00; outline: none; background-color: transparent; border-color: transparent; text-align: center;  font-size: 16px; font-family: 'Open Sans';  font-style: italic;"
+                  style="color: #000000; outline: none; background-color: transparent; border-color: transparent; text-align: center;  font-size: 16px; font-family: 'Open Sans';  font-style: italic;"
                   ng-model="employee.quote"></textarea>
     </div>
 
-    <div ng-if="mode=='list'">
-        <table>
-            <tr>
-                <td>11111</td>
-            </tr><tr>
-                <td>11111</td>
-            </tr><tr>
-                <td>11111</td>
-            </tr>
-        </table>
-    </div>
+    <!--<div class="feedback text-center">-->
+        <!--<div>-->
+            <!--<img src="img/edit.jpg" style="height: 30px; width: 30px;">-->
+        <!--</div>-->
+
+        <!--<div>-->
+            <!--<img src="img/save.jpg" style="height: 30px; width: 30px;">-->
+        <!--</div>-->
+
+    <!--</div>-->
 
 </div>
