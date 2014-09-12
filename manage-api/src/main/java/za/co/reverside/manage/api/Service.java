@@ -2,14 +2,12 @@ package za.co.reverside.manage.api;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import za.co.reverside.manage.model.Consultant;
 import za.co.reverside.manage.repository.ConsultantRepository;
 
 import java.util.Date;
+import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -29,5 +27,16 @@ public class Service {
         Consultant consultant = consultantRepository.findOne(id);
         return consultant;
     }
+
+    @RequestMapping(value = "api/consultants", method = RequestMethod.GET)
+    public List<Consultant> getConsultant(){
+        return consultantRepository.findAll();
+    }
+
+    @RequestMapping(value = "api/consultants/add", method = RequestMethod.POST, consumes = "application/json")
+    public void addConsultant(@RequestBody Consultant consultant) {
+        consultantRepository.save(consultant);
+    }
+
 
 }
