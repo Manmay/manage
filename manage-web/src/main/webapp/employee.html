@@ -1,84 +1,156 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap 3, from LayoutIt!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="">
-    <!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css"
-    /-->
-    <!--link rel="stylesheet/less" href="less/responsive.less" type="text/css"
-    /-->
-    <!--script src="js/less-1.3.3.min.js"></script-->
-    <!--append â€˜#!watchâ€™ to the browser URL, then refresh the page. -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="lib/html5shiv.js"></script>
-      <![endif]-->
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="img/favicon.png">
-    <script type="text/javascript" src="lib/jquery.min.js"></script>
-    <script type="text/javascript" src="lib/bootstrap.min.js"></script>
-    <script type="text/javascript" src="lib/scripts.js"></script>
+    <meta name="author" content="Sergey Pozhilov (GetTemplate.com)">
+    <title>Magister - Free html5 template by GetTemplate</title>
+    <link rel="shortcut icon"
+    href="assets/images/gt_favicon.png">
+    <!-- Bootstrap itself -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"
+    rel="stylesheet" type="text/css">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="assets/css/magister.css">
+    <!-- Fonts -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"
+    rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Wire+One" rel="stylesheet"
+    type="text/css">
   </head>
   
-  <body>
+  <body class="theme-invert">
+    <nav class="mainmenu">
+      <div class="container">
+        <div class="dropdown">
+          <button type="button" class="navbar-toggle" data-toggle="dropdown">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- <a data-toggle="dropdown" href="#">Dropdown trigger</a> -->
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            <li>
+              <a href="#head" class="active">Home</a>
+            </li>
+            <li>
+              <a href="#about">About me</a>
+            </li>
+            <li>
+              <a href="#contact">Get in touch</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Main (Home) section -->
     <div class="container">
-      <div class="row clearfix">
-        <div class="col-md-12 column">
-          <div class="row clearfix">
-            <div class="col-md-12 column">
-              <h1 class="text-info">Employee Details</h1>
-            </div>
+      <div class="row">
+        <div class="col-md-12"></div>
+      </div>
+    </div>
+    <section class="section" id="head" draggable="true">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 text-center"
+          style="">
+            <!-- Site Title, your name, HELLO msg, etc. -->
+            <img src=".\assets\images\soumya.jpg" class="center-block img-circle img-responsive">
+            <h1 class="title">Soumya Ranjan Pattanaik</h1>
+            <h2 class="subtitle">Associate at Reverside</h2>
+            <!-- Short introductory (optional) -->
+            <h3 class="tagline">Currently busy Working at Zurich
+              <br>I like it here. The people are so nice and calm.</h3>
+            <!-- Nice place to
+            describe your site in a sentence or two -->
           </div>
-          <div class="row clearfix">
-            <div class="col-md-8 column">
-              <div class="tabbable" id="tabs-301627">
-                <ul class="nav nav-tabs">
-                  <li class="active">
-                    <a href="#panel-635690" data-toggle="tab">Professional Details</a>
-                  </li>
-                  <li>
-                    <a href="#panel-971981" data-toggle="tab">Personal Details</a>
-                  </li>
-                </ul>
-                <div class="tab-content">
-                  <div class="tab-pane active" id="panel-635690">
-                    <h2>Soumya Ranjan Pattanaik</h2>
-                    <h3>
-                      <span lang="en-za">Associate, IT &amp; Consulting</span>
-                    </h3>
-                    <h4>Office: 0861 99 9990
-                      <br>Fax: +27 86 599 4497
-                      <br>Cell: 0749210674
-                      <br>soumya.pattanaik@reverside.co.za</h4>
-                  </div>
-                  <div class="tab-pane" id="panel-971981">
-                    <p>---add info ---</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 column">
-              <img class="img-rounded" alt="140x140" src="img/user_avatar.jpg">
-              <blockquote>
-                <p>And miles to go before I sleep.</p>
-                <small>--Robert Frost
-                  <cite></cite>
-                </small>
-              </blockquote>
-            </div>
+          <!-- /col -->
+        </div>
+        <!-- /row -->
+      </div>
+    </section>
+    <!-- Second (About) section -->
+    <section class="section" id="about">
+      <div class="container">
+        <h2 class="text-center title">About me</h2>
+        <div class="row">
+          <div class="col-sm-4 col-sm-offset-2">
+            <h5>
+              <strong>About
+                <br>
+              </strong>
+            </h5>
+            <p>While being asked to write about myself in school, I was totally confused
+              as to from where to start how to write and so on. The entire class was
+              on discussions on how to write such a topic. We all know about ourselves,
+              but when somebody asks you to write, then we just get stuck with points
+              and wonder from where to start.</p>
+          </div>
+          <div class="col-sm-4">
+            <h5>
+              <strong>More Info
+                <br>
+              </strong>
+            </h5>
+            <p>While being asked to write about myself in school, I was totally confused
+              as to from where to start how to write and so on. The entire class was
+              on discussions on how to write such a topic. We all know about ourselves,
+              but when somebody asks you to write, then we just get stuck with points
+              and wonder from where to start.</p>
+            <h5>
+              <strong>My links
+                <br>
+              </strong>
+            </h5>
+            <p>
+          
+              <a href="https://twitter.com/spattanaik75">Twitter</a>/
+              <a href="http://linkedin.com/spattanaik75">LinkedIn</a>/
+              <a href="https://www.facebook.com/spattanaik75">Facebook</a>
+            </p>
           </div>
         </div>
       </div>
-    </div>
+    </section>
+    <!-- Third (Works) section -->
+    <!-- Fourth (Contact) section -->
+    <section class="section" id="contact">
+      <div class="container">
+        <h2 class="text-center title">Get in touch</h2>
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2 text-center">
+            <p class="lead"></p>
+            <p>Feel free to email me, or drop me a line in Twitter!</p>
+            <p>
+              <b>soumya.pattanaik@reverside.co.za</b>
+              <br>
+              <b>+27-749210674</b>
+              <br>
+              <br>
+            </p>
+            <ul class="list-inline list-social">
+              <li>
+                <a href="https://twitter.com/spattanaik75" class="btn btn-link"><i class="fa fa-twitter fa-fw"></i> Twitter</a>
+              </li>
+              <li>
+                <a href="https://github.com/spattanaik75" class="btn btn-link"><i class="fa fa-github fa-fw"></i> Github</a>
+              </li>
+              <li>
+                <a href="http://linkedin.com/spattanaik75" class="btn btn-link"><i class="fa fa-linkedin fa-fw"></i> LinkedIn</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Load js libs only when the page is loaded. -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="assets/js/modernizr.custom.72241.js"></script>
+    <!-- Custom template scripts -->
+    <script src="assets/js/magister.js"></script>
   </body>
+
 </html>
