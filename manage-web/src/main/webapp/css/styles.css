@@ -1,0 +1,29 @@
+.largeText {
+	width: 100%; 
+	color: #000000; 
+	outline: none; 
+	background-color: transparent; 
+	border-color: transparent; 
+	text-align: center; 
+	font-size: large; 
+	text-transform: uppercase; 
+	font-family: Georgia; 
+	font-weight: bold;
+}
+
+.largeText:focus {
+	width: 100%; 
+	color: #000000; 
+	outline: none; 
+	background-color: transparent; 
+	border-color: transparent; 
+	text-align: center; 
+	font-size: xx-large; 
+	text-transform: uppercase; 
+	font-family: Georgia; 
+	font-weight: bold;
+}
+
+.karim {
+	background-color : red;
+}

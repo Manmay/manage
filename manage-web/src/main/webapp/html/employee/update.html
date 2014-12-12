@@ -1,0 +1,37 @@
+<div class="col-md-12 text-center" ng-init="init()">
+		
+		<div class="text-right">
+			<a ng-href="#/employee/1/delete"><i class="fa fa-trash fa-1x"> Delete</i></a>
+			<a ng-href="#/employee/create"><i class="fa fa-plus-square fa-1x"> Create</i></a>
+			<a ng-href="#/employee/search"><i class="fa fa-search fa-1x"> Search</i></a> 
+			<a ng-href="#/employee/1/view"><i class="fa fa-arrow-left fa-1x"> Back</i></a> 
+			
+		</div>
+
+		<textarea spellcheck="false" placeholder="Full Name" style="width: 100%; outline: none; color: #000000; background-color: transparent; border-color: transparent; text-align: center; font-size: 24px; text-transform: uppercase; font-family: Georgia; font-weight: bold;"	ng-model="employee.fullName"></textarea>
+		<img onclick="document.getElementById('upload').click()" ng-src="{{employee.photo}}" style="border-radius: 50% 50% 50% 50%; width: 150px; height: 150px;" />
+		<br>
+		<input id="upload" style="display: none;" type="file"  ng-file-select />
+		<br> 
+		<input	placeholder="Designation"  style="color: #000000; outline: none; background-color: transparent; border-color: transparent; text-align: center; font-size: 24px; font-family: 'Open Sans'; font-weight: bold;" ng-model="employee.designation" list="designations">	
+			<datalist id="designations">
+				<option value="Trainee">
+				<option value="Associate">
+				<option value="Consultant">
+				<option value="Senior Consultant">
+			</datalist>
+		</input> 
+		<br> 
+		<input type="tel" placeholder="Phone" style="width: 100%; color: #000000; outline: none; background-color: transparent; border-color: transparent; text-align: center; font-size: 14px; line-height: 16px; font-family: 'Open Sans'; font-style: normal; font-weight: bold;" ng-model="employee.phone" /> 
+		<input type="email" placeholder="Email"	style="width: 100%; color: #000000; outline: none; background-color: transparent; border-color: transparent; text-align: center; font-size: 14px; line-height: 16px; font-family: 'Open Sans'; font-style: normal; font-weight: bold;"	ng-model="employee.email" /> 
+		<input disabled type="text"	style="height: 48px; width: 48px; text-align: center; font-size: 30px;"	ng-value="{{employee.score[0]}}" /> 
+		<input disabled type="text"	style="height: 48px; width: 48px; text-align: center; font-size: 30px;"	ng-value="{{employee.score[1]}}" /> 
+		<input disabled type="text"	style="height: 48px; width: 48px; text-align: center; font-size: 30px;"	ng-value="{{employee.score[2]}}" /> 
+		<input disabled type="text"	style="height: 48px; width: 48px; text-align: center; font-size: 30px;"	ng-value="{{employee.score[3]}}" /> 
+		<br>
+		<textarea spellcheck="false" placeholder="About Me" cols="30" rows="3" style="color: #000000; outline: none; background-color: transparent; border-color: transparent; text-align: center; font-size: 16px; font-family: 'Open Sans'; font-style: italic;"	ng-model="employee.quote"></textarea>
+		<br>
+		<br>
+		<a ng-href="#employee/1/view"><button style="border-radius : 15px; border-size: 0px;">Cancel</button></a>
+		<a><button ng-click="update()" style="border-radius : 15px; border-size: 0px;">Update</button></a>
+</div>
