@@ -1,21 +1,26 @@
 package za.co.reverside.manage.api;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import za.co.reverside.manage.model.Consultant;
-import za.co.reverside.manage.repository.ConsultantRepository;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 import java.util.Date;
 import java.util.List;
 
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import za.co.reverside.manage.model.domain.Employee;
+import za.co.reverside.manage.repository.EmployeeRepository;
 
 @RestController
 public class Service {
 
     @Autowired
-    private ConsultantRepository consultantRepository;
+    private EmployeeRepository employeeRepository;
 
     @RequestMapping(value = "api/time", method = GET)
     public String getTime(){
@@ -23,19 +28,19 @@ public class Service {
     }
 
     @RequestMapping(value = "api/consultants/{id}", method = RequestMethod.GET)
-    public Consultant getConsultant(@PathVariable("id") Long id){
-        Consultant consultant = consultantRepository.findOne(id);
+    public Employee getConsultant(@PathVariable("id") Long id){
+        Employee consultant = employeeRepository.findOne(id);
         return consultant;
     }
 
     @RequestMapping(value = "api/consultants", method = RequestMethod.GET)
-    public List<Consultant> getConsultant(){
-        return consultantRepository.findAll();
+    public List<Employee> getConsultant(){
+        return employeeRepository.findAll();
     }
 
     @RequestMapping(value = "api/consultants/add", method = RequestMethod.POST, consumes = "application/json")
-    public void addConsultant(@RequestBody Consultant consultant) {
-        consultantRepository.save(consultant);
+    public void addConsultant(@RequestBody Employee consultant) {
+        employeeRepository.save(consultant);
     }
 
 
