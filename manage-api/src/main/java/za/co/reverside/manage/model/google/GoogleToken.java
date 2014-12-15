@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-public class TokenResponse {
+public class GoogleToken {
     @JsonProperty("access_token")
     private String accessToken;
     @JsonProperty("refresh_token")
