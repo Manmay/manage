@@ -11,7 +11,7 @@ import za.co.reverside.manage.model.domain.Employee;
 import za.co.reverside.manage.model.domain.Login;
 import za.co.reverside.manage.model.google.GoogleUser;
 import za.co.reverside.manage.repository.EmployeeRepository;
-import za.co.reverside.manage.repository.GoogleUserRepository;
+import za.co.reverside.manage.service.GoogleAuthService;
 import za.co.reverside.manage.repository.LoginRepository;
 
 
@@ -19,7 +19,7 @@ import za.co.reverside.manage.repository.LoginRepository;
 public class SecurityService {
 	
 	@Autowired
-	GoogleUserRepository googleUserRepository;
+	GoogleAuthService googleAuthService;
 	
 	@Autowired
 	EmployeeRepository employeeRepository;
@@ -29,22 +29,28 @@ public class SecurityService {
 
 	@RequestMapping(value="login", method= GET)
 	public String login(@RequestParam("token") String securityToken){
-		GoogleUser googleUser = googleUserRepository.findByAccessToken(securityToken);
+		GoogleUser googleUser = googleAuthService.validateAccessToken(securityToken);
+
+		Employee employee = employeeRepository.findByEmail(googleUser.getEmail());
+		if(employee == null){
+			employee = new Employee(googleUser);
+			employeeRepository.save(employee);
+
+		}
+
 		Login login = loginRepository.findByUserName(googleUser.getEmail());
 		if(login == null){
-			Employee employee = new Employee(googleUser);
-			employeeRepository.save(employee);
 			login = new Login(googleUser.getEmail(), securityToken);
 			loginRepository.save(login);
-		} else {
-			login.setPassword(securityToken);
-			loginRepository.save(login);
 		}
+
 		return login.getUserName();
 	}
 	
 	@RequestMapping(value="logout", method= GET)
-	public void logout(String securityToken){
-		
+	public void logout(@RequestParam("token") String securityToken){
+		Login login = loginRepository.findByPassword(securityToken);
+		loginRepository.delete(login);
+		googleAuthService.invalidateAccessToken(securityToken);
 	}
 }

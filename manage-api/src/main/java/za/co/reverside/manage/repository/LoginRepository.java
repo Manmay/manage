@@ -7,4 +7,6 @@ import za.co.reverside.manage.model.domain.Login;
 public interface LoginRepository extends JpaRepository<Login, Long> {
 	
 	public Login findByUserName(String userName);
+
+	public Login findByPassword(String password);
 }
