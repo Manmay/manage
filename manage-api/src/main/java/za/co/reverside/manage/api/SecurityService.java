@@ -2,11 +2,13 @@ package za.co.reverside.manage.api;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,7 +35,8 @@ public class SecurityService {
 	LoginRepository loginRepository;
 
 	@RequestMapping(value="login", method= GET)
-	public ResponseEntity<String> login(@RequestParam("code") String authorizationCode, @RequestParam("state") String requestedUrl) {		
+	public ResponseEntity<String> login(@RequestParam(value="code") String authorizationCode, @RequestParam("state") String requestedUrl) {		
+		
 		GoogleToken googleToken = googleAuthService.createToken(authorizationCode);		
 		GoogleUser googleUser = googleAuthService.getUserInfo(googleToken.getAccessToken());		
         Employee employee = employeeRepository.findByEmail(googleUser.getEmail());		
@@ -48,16 +51,27 @@ public class SecurityService {
 		}
 		MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
 		headers.add("Location", requestedUrl);
-		headers.add("Set-Cookie", "token="+googleToken.getAccessToken());
+		// TODO: add apache commons code Base64 class
+		String token = Base64.encodeBase64String(((login.getUserName()+":"+login.getPassword()).getBytes()));
+		headers.add("Set-Cookie", "token="+token);
 		return new ResponseEntity<String>(headers, HttpStatus.MOVED_PERMANENTLY);
 	}
 	
-	// TODO : This url should be secured
 	@RequestMapping(value="logout", method= GET)
-	public void logout(@RequestParam("token") String accessToken){
-		Login login = loginRepository.findByPassword(accessToken);
-		loginRepository.delete(login);
-		googleAuthService.destroyToken(accessToken);
+	public ResponseEntity<String>  logout(@CookieValue("token") String accessToken){
+		System.out.println("Logout Start");
+		try{
+			Login login = loginRepository.findByPassword(accessToken);
+			loginRepository.delete(login);
+			googleAuthService.destroyToken(accessToken);
+		}catch(Exception e){
+			
+		}
+		System.out.println("Logout End");
+		MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
+		headers.add("Location", "http://localhost:8080/index.html");
+		headers.add("Set-Cookie", "token="+"; Max-Age=0");
+		return new ResponseEntity<String>(headers, HttpStatus.MOVED_PERMANENTLY);
 	}
 	
 }

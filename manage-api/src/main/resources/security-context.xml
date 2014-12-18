@@ -10,7 +10,11 @@
  
     <http use-expressions="true" create-session="stateless">
     	<intercept-url pattern="/login"  access="permitAll" />
-        <intercept-url pattern="/api/**" access="isAuthenticated()" />
+    	<intercept-url pattern="/api/**" method="OPTIONS"  access="permitAll" />
+        <intercept-url pattern="/api/**" method="GET"  access="isAuthenticated()" />
+        <intercept-url pattern="/api/**" method="POST"  access="isAuthenticated()" />
+        <intercept-url pattern="/api/**" method="PUT"  access="isAuthenticated()" />
+        <intercept-url pattern="/api/**" method="DELETE"  access="isAuthenticated()" />
         <http-basic />
     </http>
  
