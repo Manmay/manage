@@ -48,7 +48,7 @@ public class SecurityService {
 		}
 		MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
 		headers.add("Location", requestedUrl);
-		headers.add("Set-Cookie", "token=mytoken");
+		headers.add("Set-Cookie", "token="+googleToken.getAccessToken());
 		return new ResponseEntity<String>(headers, HttpStatus.MOVED_PERMANENTLY);
 	}
 	
