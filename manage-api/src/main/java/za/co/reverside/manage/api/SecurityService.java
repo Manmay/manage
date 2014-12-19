@@ -40,20 +40,23 @@ public class SecurityService {
 		GoogleToken googleToken = googleAuthService.createToken(authorizationCode);		
 		GoogleUser googleUser = googleAuthService.getUserInfo(googleToken.getAccessToken());		
         Employee employee = employeeRepository.findByEmail(googleUser.getEmail());		
-		if(employee == null) {			
+
+		if(employee == null) {
 			employee = new Employee(googleUser);
 			employeeRepository.save(employee);
 		}
+
 		Login login = loginRepository.findByUserName(googleUser.getEmail());		
 		if(login == null){
 			login = new Login(googleUser.getEmail(), googleToken.getAccessToken());
 			loginRepository.save(login);
 		}
+
 		MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
 		headers.add("Location", requestedUrl);
-		// TODO: add apache commons code Base64 class
-		String token = Base64.encodeBase64String(((login.getUserName()+":"+login.getPassword()).getBytes()));
+		String token = new String(org.apache.commons.codec.binary.Base64.encodeBase64(((login.getUserName() + ":" + login.getPassword()).getBytes())));
 		headers.add("Set-Cookie", "token="+token);
+
 		return new ResponseEntity<String>(headers, HttpStatus.MOVED_PERMANENTLY);
 	}
 	
@@ -65,12 +68,15 @@ public class SecurityService {
 			loginRepository.delete(login);
 			googleAuthService.destroyToken(accessToken);
 		}catch(Exception e){
-			
+			e.printStackTrace();
 		}
+
 		System.out.println("Logout End");
+
 		MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
 		headers.add("Location", "http://localhost:8080/index.html");
 		headers.add("Set-Cookie", "token="+"; Max-Age=0");
+
 		return new ResponseEntity<String>(headers, HttpStatus.MOVED_PERMANENTLY);
 	}
 	

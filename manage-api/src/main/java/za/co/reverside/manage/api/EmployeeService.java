@@ -54,13 +54,13 @@ public class EmployeeService {
     	return employeeRepository.findByEmail(employeeEmail);
     }
     
-    @RequestMapping(value = "api/employees/me", method = RequestMethod.OPTIONS)
+  /*  @RequestMapping(value = "api/employees/me", method = RequestMethod.OPTIONS)
     public ResponseEntity<String> allowCrossOrigin(){
     	System.out.println("Allow Cross Origin");
     	MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
 		headers.add("Access-Control-Allow-Origin", "*");
 		return new ResponseEntity<String>(headers, HttpStatus.OK);
-    }
+    }*/
 
 
 }

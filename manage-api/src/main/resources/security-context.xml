@@ -9,12 +9,15 @@
         http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
  
     <http use-expressions="true" create-session="stateless">
-    	<intercept-url pattern="/login"  access="permitAll" />
-    	<intercept-url pattern="/api/**" method="OPTIONS"  access="permitAll" />
+    	<!--<intercept-url pattern="/login"   access="permitAll" />
+    	<intercept-url pattern="/logout"  access="permitAll" />
+    	<intercept-url pattern="/api/**"  access="permitAll" method="OPTIONS" />-->
+
         <intercept-url pattern="/api/**" method="GET"  access="isAuthenticated()" />
         <intercept-url pattern="/api/**" method="POST"  access="isAuthenticated()" />
         <intercept-url pattern="/api/**" method="PUT"  access="isAuthenticated()" />
         <intercept-url pattern="/api/**" method="DELETE"  access="isAuthenticated()" />
+
         <http-basic />
     </http>
  

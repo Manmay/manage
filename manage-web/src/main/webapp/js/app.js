@@ -21,13 +21,16 @@ app.controller('rootController', function ($scope, $http, $rootScope, $routePara
     
     $scope.user ;
     
-    $http.defaults.headers.common['Authorization'] = 'Basic ' + $cookies.token;
+    //$http.defaults.headers.common['Authorization'] = 'Basic ' + $cookies.token;
     
     $http({
     	method : "GET",
-    	url: "http://localhost:9090/api/employees/me"
+    	url: "http://localhost:9090/api/employees/me",
+        headers: {
+            'Authorization' : 'Basic ' + $cookies.token
+        }
     }).success(function(data, status){
-    	console.log("Successfull");			
+    	$scope.user  = data;
     }).error(function(data, status){
     	console.log(status);
     });

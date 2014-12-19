@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableAutoConfiguration
 @ComponentScan
 @EnableJpaRepositories
-@ImportResource(value={"classpath:security-context.xml", "classpath:application-context.xml"})
+@ImportResource(value={"classpath:security-context.xml"})
 public class Application {
 
     public static void main(String[] args) {
