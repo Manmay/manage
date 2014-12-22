@@ -1,6 +1,7 @@
 console.log(document.cookie.search('token'));
 
 if(document.cookie.search('token')==-1){
+    console.log(window.location);
     window.location = 'https://accounts.google.com/o/oauth2/auth?client_id=21960379372-a7l6nn0qb00peo711rc6vigoc1mrje6v.apps.googleusercontent.com&scope=profile email&response_type=code&redirect_uri=http://localhost:9090/login&approval_prompt=auto&state='+ window.location;
 }
 

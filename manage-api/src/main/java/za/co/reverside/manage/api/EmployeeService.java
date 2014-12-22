@@ -51,7 +51,8 @@ public class EmployeeService {
     @RequestMapping(value = "api/employees/me", method = RequestMethod.GET, produces = "application/json")
     public Employee me(Principal principal){
     	String employeeEmail = principal.getName();
-    	return employeeRepository.findByEmail(employeeEmail);
+        System.out.println(employeeEmail+">>>>>>>>");
+        return employeeRepository.findByEmail(employeeEmail);
     }
     
   /*  @RequestMapping(value = "api/employees/me", method = RequestMethod.OPTIONS)
