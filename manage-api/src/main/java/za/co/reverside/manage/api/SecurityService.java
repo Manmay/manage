@@ -35,8 +35,11 @@ public class SecurityService {
 	LoginRepository loginRepository;
 
 	@RequestMapping(value="login", method= GET)
-	public ResponseEntity<String> login(@RequestParam(value="code", required = false) String authorizationCode, @RequestParam(value="error", required = false) String error, @RequestParam("state") String requestedUrl) {
-		System.out.println("url : "+requestedUrl);
+	public ResponseEntity<String> login(@RequestParam(value="code", required = false) String authorizationCode,
+										@RequestParam(value="error", required = false) String error,
+										@RequestParam("state") String requestedUrl) {
+
+		System.out.println("Requested URL : "+requestedUrl);
 
 		if(error!=null){
 			MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
