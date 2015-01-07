@@ -1,3 +1,62 @@
+html,
+body {
+	margin:0;
+	padding:0;
+	height:100%;
+}
+
+#wrapper {
+	min-height:100%;
+	position:relative;
+}
+
+#header {
+	background:#5ee;
+}
+
+#content {
+	padding-top:50px;
+	padding-bottom:50px;   /* Height of the footer element */
+}
+
+#footer {
+	width:100%;
+	height:50px;
+	position:absolute;
+	bottom:0;
+	left:0;
+	background:#555555;
+}
+
+.smallTextInput{
+	width: 100%;
+	color: #000000;
+	outline: none;
+	background-color: transparent;
+	border-color: transparent;
+	text-align: center;
+	font-size: 14px;
+	line-height: 16px;
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: bold;
+	box-shadow: none !important;
+}
+
+.mediumTextInput{
+	width: 100%;
+	color: #000000;
+	outline: none;
+	background-color: transparent;
+	border-color: transparent;
+	text-align: center;
+	font-size: x-large;
+	line-height: 16px;
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: bold;
+}
+
 .largeText {
 	width: 100%; 
 	color: #000000; 
@@ -5,7 +64,7 @@
 	background-color: transparent; 
 	border-color: transparent; 
 	text-align: center; 
-	font-size: large; 
+	font-size: xx-large;
 	text-transform: uppercase; 
 	font-family: Georgia; 
 	font-weight: bold;
@@ -24,6 +83,36 @@
 	font-weight: bold;
 }
 
-.karim {
-	background-color : red;
+
+
+select
+{
+	width:  100%;
+	-webkit-appearance: none;
+	outline: none;
+	background-color: transparent;
+	border-color: transparent;
+	text-align: center;
+	font-size: large;
+	font-family: Georgia;
+	font-weight: bold;
+	/*color: transparent;*/
+	/*position: absolute;*/
+	/*top: 0;*/
+	/*left: 0;*/
+	display: none;
 }
+
+/*select:focus*/
+/*{*/
+	/*width:  auto;*/
+	/*-webkit-appearance: none;*/
+	/*outline: none;*/
+	/*background-color: transparent;*/
+	/*border-color: transparent;*/
+	/*text-align: center;*/
+	/*font-size: large;*/
+	/*font-family: Georgia;*/
+	/*font-weight: bold;*/
+	/*color: transparent;*/
+/*}*/

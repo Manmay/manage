@@ -30,6 +30,10 @@ public class Employee {
     public Employee(){
     	
     }
+
+	public String getFullName(){
+		return firstName+" "+lastName;
+	}
 	
     public Employee(GoogleUser googleUser) {
 		this.firstName = googleUser.getFirstName();
