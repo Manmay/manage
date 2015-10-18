@@ -24,8 +24,8 @@
     <authentication-manager>
         <authentication-provider>
         	<jdbc-user-service data-source-ref="dataSource"  
-        		users-by-username-query = "select user_name, password, enabled from login where user_name = ? "
-        		authorities-by-username-query = "select user_name, role from login where user_name = ? "/>
+        		users-by-username-query = "select l.user_name, l.password, e.enabled from login as l, employee as e where l.user_name = ? and l.user_name = e.email "
+        		authorities-by-username-query = "select email, role from employee where email = ? "/>
 	  	</authentication-provider>
     </authentication-manager>
  

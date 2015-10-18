@@ -9,40 +9,31 @@
 
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
-    <script src="../lib/jquery.min.js"></script>
-    <script src="../lib/bootstrap.min.js"></script>
+    <script src="../libs/jquery.min.js"></script>
+    <script src="../libs/bootstrap.min.js"></script>
 
-    <script src="../lib/angular.min.js"></script>
-    <script src="../lib/angular-route.min.js"></script>
-    <script src="../lib/angular-cookies.min.js"></script>
+    <script src="../libs/angular.min.js"></script>
+    <script src="../libs/angular-route.min.js"></script>
+    <script src="../libs/angular-cookies.min.js"></script>
 
     <link rel="stylesheet" href="../css/styles.css">
     <script src="../js/app.js"></script>
 </head>
 
 <body ng-controller="rootController">
-<script>
-    if(document.cookie.search('token')==-1){
-        var redirectUrl = 'https://accounts.google.com/o/oauth2/auth?client_id=21960379372-a7l6nn0qb00peo711rc6vigoc1mrje6v.apps.googleusercontent.com&scope=profile email&response_type=code&redirect_uri=http://localhost:9090/login&approval_prompt=auto&state='+ encodeURIComponent(window.location.href);
-        console.log(redirectUrl);
-        window.location = redirectUrl;
-    }
-</script>
-    <div id="wrapper">
-        <div id="header" ng-include="'/app/menu.html'"></div>
+        <script>
+            if(document.cookie.search('token')==-1){
+                var redirectUrl = 'https://accounts.google.com/o/oauth2/auth?client_id=21960379372-a7l6nn0qb00peo711rc6vigoc1mrje6v.apps.googleusercontent.com&scope=profile email&response_type=code&redirect_uri=http://localhost:9090/login&approval_prompt=auto&state='+ encodeURIComponent(window.location.href);
+                console.log(redirectUrl);
+                window.location = redirectUrl;
+            }
+        </script>
 
-        <div  id="content" ng-view></div>
+        <div ng-include="'/app/header.html'"></div>
 
-        <div id="footer" style="color: #ffffff;">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="span12 text-center" style="padding-top: 10px;">
-                        <small>COPYRIGHT © 2014 -  Reverside Software Solutions (Pty) Ltd</small>
-                    </div>
-                </div>
-            </div>
+        <div ng-view></div>
 
-        </div>
-    </div>
+        <div ng-include="'/app/footer.html'"></div>
+
 </body>
 </html>

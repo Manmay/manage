@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		targetNamespace="http://reverside.co.za/manage/model/api"
+		xmlns:tns="http://reverside.co.za/manage/model/api"
+		elementFormDefault="qualified">
+
+	<element name="EmployeeQueryModel">
+		<complexType>
+			<sequence>
+				<element name="fullName" type="string"></element>
+				<element name="photo" type="string"></element>
+				<element name="email" type="string"></element>
+				<element name="gender" type="string"></element>
+				<element name="phone" type="string"></element>
+				<element name="location" type="string"></element>
+				<element name="dateOfBirth" type="string"></element>
+				<element name="maritalStatus" type="boolean"></element>
+				<element name="dateOfMarriage" type="string"></element>
+			</sequence>
+		</complexType>
+	</element>
+
+</schema>

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import za.co.reverside.manage.model.api.EmployeeQueryModel;
 import za.co.reverside.manage.model.domain.Employee;
 import za.co.reverside.manage.repository.EmployeeRepository;
 
@@ -49,10 +50,28 @@ public class EmployeeService {
     }
     
     @RequestMapping(value = "api/employees/me", method = RequestMethod.GET, produces = "application/json")
-    public Employee me(Principal principal){
+    public EmployeeQueryModel me(Principal principal){
     	String employeeEmail = principal.getName();
         System.out.println(employeeEmail+">>>>>>>>");
-        return employeeRepository.findByEmail(employeeEmail);
+        Employee employee = employeeRepository.findByEmail(employeeEmail);
+        EmployeeQueryModel data = new EmployeeQueryModel();
+        data.setFullName(employee.getFirstName()+" "+ employee.getLastName());
+        data.setEmail(employee.getEmail());
+        data.setPhoto(employee.getPhoto());
+        data.setGender(employee.getGender());
+        data.setPhone(employee.getPhone());
+        data.setLocation(employee.getLocation());
+        if(employee.getDateOfBirth()!=null){
+            data.setDateOfBirth(employee.getDateOfBirth().toString());
+        }
+        if(employee.getDateOfMarriage()==null){
+            data.setMaritalStatus(false);
+        } else {
+            data.setMaritalStatus(true);
+            data.setDateOfMarriage(employee.getDateOfMarriage().toString());
+        }
+
+        return data;
     }
     
   /*  @RequestMapping(value = "api/employees/me", method = RequestMethod.OPTIONS)

@@ -1,0 +1,149 @@
+<div class="container-fluid"  ng-init="init()">
+
+    <div class="row-fluid">
+        <div class="col-md-12">
+            <div class="form-group text-left">
+                <h3>Profile</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+
+        <div class="col-md-4">
+            <div class="form-group text-right ">
+                <img ng-src="{{employee.photo}}" class="img-thumbnail" alt="Cinque Terre" width="100%" >
+                <label><a>Change</a></label>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <form class="form-horizontal" role="form" name="form" novalidate>
+                <div class="form-group">
+                    <label for="fullName" class="control-label col-sm-2">Name *</label>
+                    <div class="col-sm-10">
+                        <input ng-model="employee.fullName" type="text" class="form-control" id="fullName" name="fullName"
+                               placeholder="What is your full name ?"  required disabled>
+                        <div ng-show="form.$submitted" class="text-right" style="color: red; font-style: italic;">
+                            <div ng-show="form.fullName.$error.required">Please fill up your full name</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="control-label col-sm-2">Email *</label>
+                    <div class="col-sm-10">
+                        <input ng-model="employee.email" type="email" class="form-control" id="email" name="email"
+                               placeholder="What is your reverside email ?"  required disabled>
+                        <div ng-show="form.$submitted" class="text-right" style="color: red; font-style: italic;">
+                            <div ng-show="form.email.$error.required">Please fill up your (reverside) email</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <label>
+                            <input ng-model="employee.gender" type="radio" name="gender" value="male" required disabled> Male
+                            <input ng-model="employee.gender" type="radio" name="gender" value="female" required disabled> Female *
+                        </label>
+                        <div ng-show="form.$submitted" class="text-right" style="color: red; font-style: italic;">
+                            <div ng-show="form.gender.$error.required">Please select your gender</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-if="user.designation">
+                    <label for="designation" class="control-label col-sm-2">Designation *</label>
+                    <div class="col-sm-10">
+                        <select  ng-model="employee.designation"
+                                class="form-control" id="designation"  name="designation" required disabled>
+                            <option value="0">What is your designation ?</option>
+                            <option value="1">Trainee</option>
+                            <option value="2">Associate</option>
+                            <option value="3">Consultant</option>
+                            <option value="4">Senior Consultant</option>
+                            <option value="5">Practice Manager</option>
+                        </select>
+                        <div ng-show="form.$submitted" class="text-right" style="color: red; font-style: italic;">
+                            <div ng-show="form.designation.$error.required">Please select your designation</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-if="employee.dateOfJoining">
+                    <label for="joiningDate" class="control-label col-sm-2">Joining *</label>
+                    <div class="col-sm-10">
+                        <input ng-model="employee.dateOfJoining" type="text"
+                               class="form-control" id="joiningDate" name="joiningDate" placeholder="When did you join reverside ?" required  disabled>
+                        <div ng-show="form.$submitted" class="text-right" style="color: red; font-style: italic;">
+                            <div ng-show="form.joiningDate.$error.required">Please fill up your date of joining</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone" class="control-label col-sm-2">Phone *</label>
+                    <div class="col-sm-10">
+                        <input ng-model="employee.phone" type="text" class="form-control" id="phone" name="phone" placeholder="What is your mobile number ?" required>
+                        <div ng-show="form.$submitted " class="text-right" style="color: red; font-style: italic;">
+                            <div ng-show="form.phone.$error.required">Please fill up your phone number</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="location" class="control-label col-sm-2">Location *</label>
+                    <div class="col-sm-10">
+                        <input ng-model="employee.location" type="text" class="form-control" id="location" name="location" placeholder="Where are you staying ?" required>
+                        <div ng-show="form.$submitted" class="text-right" style="color: red; font-style: italic;">
+                            <div ng-show="form.location.$error.required">Please fill up your location</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="birthday" class="control-label col-sm-2">Birthday *</label>
+                    <div class="col-sm-10">
+                        <input ng-model="employee.dateOfBirth" type="text"
+                               pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$"
+                               class="form-control" id="birthday" name="birthday" placeholder="When did you born ?" required>
+                        <div ng-show="form.$submitted" class="text-right" style="color: red; font-style: italic;">
+                            <div ng-show="form.birthday.$error.required">Please fill up your date of birth</div>
+                            <div ng-show="form.birthday.$error.pattern">Please fill up your date as dd/mm/yyyy</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <label>
+                            <input ng-model="employee.maritalStatus" type="checkbox" > Are you married ?
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-if="employee.maritalStatus">
+                    <label for="anniversary" class="control-label col-sm-2">Anniversary *</label>
+                    <div class="col-sm-10">
+                        <input ng-model="employee.dateOfMarriage" type="text"
+                               pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$"
+                               class="form-control" id="anniversary" name="anniversary" placeholder="When did you get married ?" required>
+                        <div ng-show="form.$submitted" class="text-right" style="color: red; font-style: italic;">
+                            <div ng-show="form.anniversary.$error.required">Please fill up your date of marriage</div>
+                            <div ng-show="form.anniversary.$error.pattern">Please fill up your date as dd/mm/yyyy</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group text-right">
+                    <div class="col-sm-12">
+                        <input type="button" class="btn btn-default" ng-click="reset(form)" value="Reset" />
+                        <input type="submit" class="btn btn-default" ng-click="submit(form)" value="Update"/>
+                    </div>
+                </div>
+
+            </form>
+        </div> <!-- end : col -->
+    </div> <!-- end : row -->
+
+</div>

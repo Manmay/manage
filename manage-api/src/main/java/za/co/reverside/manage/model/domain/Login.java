@@ -1,39 +1,24 @@
 package za.co.reverside.manage.model.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "login")
 public class Login {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-	@Column
+	@Column(name = "user_name")
 	private String userName;
-	
-	@Column
+	@Column(name = "password")
 	private String password;
-	
-	@Column
-	private String role;
-	
-	@Column
-	private Boolean enabled;
-	
-	public Login(){	
-	
+
+	public Login(){
 	}
 	
 	public Login(String userName, String password) {
 		this.userName = userName;
 		this.password = password;
-		this.role = "ROLE_USER";
-		this.enabled = true;
 	}
 	
 	public Long getId() {
@@ -58,22 +43,6 @@ public class Login {
 	
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	
-	public String getRole() {
-		return role;
-	}
-	
-	public void setRole(String role) {
-		this.role = role;
-	}
-	
-	public Boolean getEnabled() {
-		return enabled;
-	}
-	
-	public void setEnabled(Boolean enabled) {
-		this.enabled = enabled;
 	}
 
 }
