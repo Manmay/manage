@@ -20,4 +20,15 @@
 		</complexType>
 	</element>
 
+	<element name="EmployeeCommandModel">
+		<complexType>
+			<sequence>
+				<element name="phone" type="string"></element>
+				<element name="location" type="string"></element>
+				<element name="dateOfBirth" type="string"></element>
+				<element name="dateOfMarriage" type="string"></element>
+			</sequence>
+		</complexType>
+	</element>
+
 </schema>

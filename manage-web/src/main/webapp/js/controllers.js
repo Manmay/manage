@@ -87,7 +87,7 @@ app.controller('rootCtrl', function ($scope, $http, $rootScope,  $window, $cooki
 
 });
 
-app.controller('profileCtrl', function ($scope, $rootScope) {
+app.controller('profileCtrl', function ($scope, $rootScope, $http) {
 
     $scope.employee;
 
@@ -99,8 +99,38 @@ app.controller('profileCtrl', function ($scope, $rootScope) {
         console.log('update profile');
         if(!form.$invalid){
             console.log($scope.employee);
-            alert("Submit Form");
+            //alert("Submit Form");
         }
+
+        var employee = {};
+        employee.phone = $scope.employee.phone;
+        employee.location = $scope.employee.location;
+        employee.dateOfBirth = $scope.employee.dateOfBirth;
+        employee.dateOfMarriage = $scope.employee.dateOfMarriage;
+
+        $http({
+            method : "PUT",
+            url: "http://localhost:9090/api/employees/me",
+            headers : {
+                "Content-Type" : "application/json"
+            },
+            data: employee
+        }).success(function(data, status){
+            console.log('update user detail success');
+            $rootScope.user = $scope.employee;
+            //console.log(data);
+            //if(data.doj == undefined)
+                //data.doj = new Date();
+            //if(data.designation == undefined)
+            //    data.designation = '0';
+
+           // $rootScope.user = data;
+
+        }).error(function(error, status){
+            console.log('update user detail error');
+            console.log(status);
+        });
+
     };
 
     $scope.reset = function(form) {
