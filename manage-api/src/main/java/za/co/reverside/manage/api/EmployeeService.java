@@ -63,13 +63,13 @@ public class EmployeeService {
         data.setPhone(employee.getPhone());
         data.setLocation(employee.getLocation());
         if(employee.getDateOfBirth()!=null){
-            data.setDateOfBirth(employee.getDateOfBirth().toString());
+            data.setDateOfBirth(new SimpleDateFormat("dd/MM/yyyy").format(employee.getDateOfBirth()));
         }
-        if(employee.getDateOfMarriage()==null){
-            data.setMaritalStatus(false);
-        } else {
+        if(employee.getDateOfMarriage()!=null){
+            data.setDateOfMarriage(new SimpleDateFormat("dd/MM/yyyy").format(employee.getDateOfMarriage()));
             data.setMaritalStatus(true);
-            data.setDateOfMarriage(employee.getDateOfMarriage().toString());
+        } else {
+            data.setMaritalStatus(false);
         }
         return data;
     }
@@ -78,7 +78,6 @@ public class EmployeeService {
     public void updateEmployee(@RequestBody EmployeeCommandModel data, Principal principal) throws Exception{
         String employeeEmail = principal.getName();
         Employee employee = employeeRepository.findByEmail(employeeEmail);
-        
         employee.setPhone(data.getPhone());
         employee.setLocation(data.getLocation());
         if(data.getDateOfBirth() != null) {

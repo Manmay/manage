@@ -66,13 +66,7 @@ app.controller('rootCtrl', function ($scope, $http, $rootScope,  $window, $cooki
             method : "GET",
             url: "http://localhost:9090/api/employees/me"
         }).success(function(data, status){
-            console.log('get user detail success');
-            console.log(data);
-            //if(data.doj == undefined)
-                //data.doj = new Date();
-            //if(data.designation == undefined)
-            //    data.designation = '0';
-
+            console.log('get user detail success' + data);
             $rootScope.user = data;
 
         }).error(function(error, status){
@@ -85,9 +79,15 @@ app.controller('rootCtrl', function ($scope, $http, $rootScope,  $window, $cooki
         $window.location.href = 'http://localhost:9090/logout';
     };
 
+    $scope.closeAlert = function(){
+       $rootScope.message = undefined;
+    };
+
 });
 
 app.controller('profileCtrl', function ($scope, $rootScope, $http) {
+
+    $scope.progress = false;
 
     $scope.employee;
 
@@ -99,15 +99,18 @@ app.controller('profileCtrl', function ($scope, $rootScope, $http) {
         console.log('update profile');
         if(!form.$invalid){
             console.log($scope.employee);
-            //alert("Submit Form");
+            var employee = {};
+            employee.phone = $scope.employee.phone;
+            employee.location = $scope.employee.location;
+            employee.dateOfBirth = $scope.employee.dateOfBirth;
+            employee.dateOfMarriage = $scope.employee.dateOfMarriage;
+            $scope.updateEmployee(employee);
         }
 
-        var employee = {};
-        employee.phone = $scope.employee.phone;
-        employee.location = $scope.employee.location;
-        employee.dateOfBirth = $scope.employee.dateOfBirth;
-        employee.dateOfMarriage = $scope.employee.dateOfMarriage;
+    };
 
+    $scope.updateEmployee = function(employee){
+        $scope.progress = true;
         $http({
             method : "PUT",
             url: "http://localhost:9090/api/employees/me",
@@ -116,19 +119,16 @@ app.controller('profileCtrl', function ($scope, $rootScope, $http) {
             },
             data: employee
         }).success(function(data, status){
+            $scope.progress = false;
             console.log('update user detail success');
             $rootScope.user = $scope.employee;
-            //console.log(data);
-            //if(data.doj == undefined)
-                //data.doj = new Date();
-            //if(data.designation == undefined)
-            //    data.designation = '0';
-
-           // $rootScope.user = data;
-
+            $rootScope.message = "Profile Update Success";
         }).error(function(error, status){
+            $scope.progress = false;
             console.log('update user detail error');
             console.log(status);
+            $rootScope.message = "Error : " + error;
+
         });
 
     };
@@ -145,3 +145,4 @@ app.controller('profileCtrl', function ($scope, $rootScope, $http) {
 app.controller('homeCtrl', function ($scope) {
 
 });
+

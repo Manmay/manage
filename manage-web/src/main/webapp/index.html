@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/styles.css">
 
 </head>
@@ -15,9 +16,12 @@
 <body>
 
     <div ng-controller="rootCtrl" ng-init="login()">
-
+        <div class="container-fluid">
+            <toast></toast>
+        </div>
         <div ng-if="user">
             <div ng-include="'/html/header.html'"></div>
+
             <div ng-view style="padding-top: 50px; padding-bottom: 50px;"></div>
             <div ng-include="'/html/footer.html'"></div>
         </div>
@@ -29,6 +33,7 @@
     <script src="lib/angular/angular-route.min.js"></script>
     <script src="lib/angular/angular-cookies.min.js"></script>
     <script src="js/controllers.js"></script>
+
 
 </body>
 
