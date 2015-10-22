@@ -117,38 +117,15 @@ select
 	/*color: transparent;*/
 /*}*/
 
-.spinner {
-	display: inline-block;
-	opacity: 0;
-	width: 0;
-
-	-webkit-transition: opacity 0.25s, width 0.25s;
-	-moz-transition: opacity 0.25s, width 0.25s;
-	-o-transition: opacity 0.25s, width 0.25s;
-	transition: opacity 0.25s, width 0.25s;
-}
-
-.has-spinner.active {
-	cursor:progress;
-}
-
-.has-spinner.active .spinner {
-	opacity: 1;
-	width: auto; /* This doesn't work, just fix for unkown width elements */
-}
-
-.has-spinner.btn-mini.active .spinner {
-	width: 10px;
-}
-
-.has-spinner.btn-small.active .spinner {
-	width: 13px;
-}
-
-.has-spinner.btn.active .spinner {
-	width: 16px;
-}
-
-.has-spinner.btn-large.active .spinner {
-	width: 19px;
+.image-thumbnail {
+	position: relative;
+	height: 180px;
+	overflow: hidden;
+	img {
+		width:920px
+		max-width: 920px; //only set this if using Twitter Bootstrap
+		position: absolute;
+		left:50%;
+		margin-left: -460px; //half of the image size
+	}
 }

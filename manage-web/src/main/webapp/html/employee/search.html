@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="col-md-12">
+            <br>
+            <input type="text" ng-model="searchText" class="form-control search-icon" placeholder="Search">
+            <br>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="col-md-3 col-lg-2" ng-repeat="employee in employees|filter:searchText">
+            <div class="thumbnail" style="background-color: white;">
+                <div class="text-center">
+                    <img ng-src="{{employee.photo}}" class="image-thumbnail img-responsive center-block" >
+                </div>
+                <div class=" text-center">
+                    <h3 style="margin-top: 0px; margin-bottom: 0px;">
+                        <strong>{{employee.firstName}} </strong></h3>
+                </div>
+                <div class=" text-center">
+                    <h3 style="margin-top: 0px; margin-bottom: 0px;">
+                        <small>{{employee.designation}}</small></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -14,7 +14,7 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Resources <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a ng-href="#/employee">Employee</a></li>
+                        <li><a ng-href="#/employee/search">Employee</a></li>
                         <li><a href="#">Leave</a></li>
                         <li><a href="#">Timesheet</a></li>
                     </ul>
@@ -23,7 +23,7 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="glyphicon glyphicon-envelope"></span> Notifications <sup style="color: red; font-weight: bolder; font-size: larger;">+5</span></sup></a></li>
-                <li><a ng-href="#/profile"><span class="glyphicon glyphicon-user"></span>  {{user.firstName}} {{user.lastName}}</a></li>
+                <li><a ng-href="#/profile"><span class="glyphicon glyphicon-user"></span>  {{user.fullName}}</a></li>
                 <li><a href="http://localhost:9090/logout"><span class="glyphicon glyphicon-log-out"></span>  Logout</a></li>
             </ul>
         </div>
