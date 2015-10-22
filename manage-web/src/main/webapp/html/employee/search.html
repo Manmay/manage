@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" ng-init="init()">
     <div class="row-fluid">
         <div class="col-md-12">
             <br>
@@ -18,7 +18,7 @@
                 </div>
                 <div class=" text-center">
                     <h3 style="margin-top: 0px; margin-bottom: 0px;">
-                        <small>{{employee.designation}}</small></h3>
+                        <small>{{employee.designation || "Employee" }}</small></h3>
                 </div>
             </div>
         </div>

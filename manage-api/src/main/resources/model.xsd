@@ -7,15 +7,14 @@
 	<element name="EmployeeQueryModel">
 		<complexType>
 			<sequence>
-				<element name="fullName" type="string"></element>
+				<element name="id" type="long"></element>
+				<element name="firstName" type="string"></element>
+				<element name="lastName" type="string"></element>
 				<element name="photo" type="string"></element>
+				<element name="designation" type="string"></element>
 				<element name="email" type="string"></element>
-				<element name="gender" type="string"></element>
 				<element name="phone" type="string"></element>
 				<element name="location" type="string"></element>
-				<element name="dateOfBirth" type="string"></element>
-				<element name="maritalStatus" type="boolean"></element>
-				<element name="dateOfMarriage" type="string"></element>
 			</sequence>
 		</complexType>
 	</element>
@@ -26,6 +25,22 @@
 				<element name="phone" type="string"></element>
 				<element name="location" type="string"></element>
 				<element name="dateOfBirth" type="string"></element>
+				<element name="dateOfMarriage" type="string"></element>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="ProfileQueryModel">
+		<complexType>
+			<sequence>
+				<element name="fullName" type="string"></element>
+				<element name="photo" type="string"></element>
+				<element name="email" type="string"></element>
+				<element name="gender" type="string"></element>
+				<element name="phone" type="string"></element>
+				<element name="location" type="string"></element>
+				<element name="dateOfBirth" type="string"></element>
+				<element name="maritalStatus" type="boolean"></element>
 				<element name="dateOfMarriage" type="string"></element>
 			</sequence>
 		</complexType>

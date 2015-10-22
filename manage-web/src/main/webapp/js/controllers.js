@@ -138,171 +138,36 @@ app.controller('profileCtrl', function ($scope, $rootScope, $http) {
 
 });
 
-app.controller('searchEmployeeCtrl', function ($scope) {
+app.controller('searchEmployeeCtrl', function ($scope, $rootScope, $http) {
 
-    $scope.employees = [
-        {
-            "id": 1001,
-            "firstName" : "Manmay",
-            "lastName": "Mohanty",
-            "photo": "https://dz2cdn2.dzone.com/storage/user-avatar/32729-thumb.jpg",
-            "designation" : "Practice Manager",
-            "location": "Johannesburg",
-            "email" : "manmay.mohanty@reverside.co.za",
-            "phone" : "0846860904"
-        },
-        {
-            "id": 1001,
-            "firstName" : "Mrunmay",
-            "lastName": "Mohanty",
-            "photo": "http://www.bothsidesofthetable.com/wp-content/uploads/2012/12/young-employee-955x1024.jpg",
-            "designation" : "Associate",
-            "location": "Sandton",
-            "email" : "mrunmay.mohanty@reverside.co.za",
-            "phone" : "0846860904"
-        },
-        {
-            "id": 1002,
-            "firstName" : "Karim",
-            "lastName": "Baig",
-            "photo": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTWfmgOhqz1cj9L8BI2skqmdaVpe_lPqEMChXZOSJWiXWVdZbOcuv0dPQ",
-            "designation" : "Associate Consultant",
-            "location": "Johannesburg",
-            "email" : "karim.baig@reverside.co.za",
-            "phone" : "0846860904"
-        },
-        {
-            "id": 1002,
-            "firstName" : "Ritimugdha",
-            "lastName": "Das",
-            "photo": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT5zfdu0lUOKbb1nTLBmg2a7yO3O5eYvmbMW59Ofva4iNvhhhctT5TjlOg",
-            "designation" : "Associate Consultant",
-            "location": "Santon",
-            "email" : "ritimugdha.das@reverside.co.za",
-            "phone" : "0846860904"
-        },
-        {
-            "id": 1001,
-            "firstName" : "Pragaty",
-            "lastName": "Prusty",
-            "photo": "https://dz2cdn2.dzone.com/storage/user-avatar/32729-thumb.jpg",
-            "designation" : "Trainee",
-            "location": "Northriding",
-            "email" : "prgaty.prusty@reverside.co.za",
-            "phone" : "0846860904"
-        },
-        {
-            "id": 1001,
-            "firstName" : "Soumya",
-            "lastName": "Pattanaik",
-            "photo": "http://www.bothsidesofthetable.com/wp-content/uploads/2012/12/young-employee-955x1024.jpg",
-            "designation" : "Business Analyst",
-            "location": "Sandton",
-            "email" : "soumya.pattanaik@reverside.co.za",
-            "phone" : "0846860904"
-        },
-        {
-            "id": 1002,
-            "firstName" : "Satyabrata",
-            "lastName": "Mishra",
-            "photo": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTWfmgOhqz1cj9L8BI2skqmdaVpe_lPqEMChXZOSJWiXWVdZbOcuv0dPQ",
-            "designation" : "Consultant",
-            "location": "Pretoria",
-            "email" : "satyabrata.mishra@reverside.co.za",
-            "phone" : "0846860904"
-        },
-        {
-            "id": 1002,
-            "firstName" : "Twinkle",
-            "lastName": "Dey",
-            "photo": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT5zfdu0lUOKbb1nTLBmg2a7yO3O5eYvmbMW59Ofva4iNvhhhctT5TjlOg",
-            "designation" : "Senior Consultant",
-            "location": "Pretoria",
-            "email" : "twinkle.dey@reverside.co.za",
-            "phone" : "0846860904"
-        },
-        {
-            "id": 1001,
-            "firstName" : "Manmay",
-            "lastName": "Mohanty",
-            "photo": "https://dz2cdn2.dzone.com/storage/user-avatar/32729-thumb.jpg",
-            "designation" : "Practice Manager",
-            "location": "Northriding",
-            "email" : "manmay.mohanty@reverside.co.za",
-            "phone" : "0846860904"
-        },
-        {
-            "id": 1001,
-            "firstName" : "Mrunmay",
-            "lastName": "Mohanty",
-            "photo": "http://www.bothsidesofthetable.com/wp-content/uploads/2012/12/young-employee-955x1024.jpg",
-            "designation" : "Associate",
-            "location": "Northriding",
-            "email" : "manmay.mohanty@reverside.co.za",
-            "phone" : "0846860904"
-        },
-        {
-            "id": 1002,
-            "firstName" : "Karim",
-            "lastName": "Baig",
-            "photo": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTWfmgOhqz1cj9L8BI2skqmdaVpe_lPqEMChXZOSJWiXWVdZbOcuv0dPQ",
-            "designation" : "Associate Consultant",
-            "location": "Northriding",
-            "email" : "manmay.mohanty@reverside.co.za",
-            "phone" : "0846860904"
-        },
-        {
-            "id": 1002,
-            "firstName" : "Ritimugdha",
-            "lastName": "Das",
-            "photo": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT5zfdu0lUOKbb1nTLBmg2a7yO3O5eYvmbMW59Ofva4iNvhhhctT5TjlOg",
-            "designation" : "Associate Consultant",
-            "location": "Northriding",
-            "email" : "manmay.mohanty@reverside.co.za",
-            "phone" : "0846860904"
-        },
-        {
-            "id": 1001,
-            "firstName" : "Manmay",
-            "lastName": "Mohanty",
-            "photo": "https://dz2cdn2.dzone.com/storage/user-avatar/32729-thumb.jpg",
-            "designation" : "Practice Manager",
-            "location": "Northriding",
-            "email" : "manmay.mohanty@reverside.co.za",
-            "phone" : "0846860904"
-        },
-        {
-            "id": 1001,
-            "firstName" : "Mrunmay",
-            "lastName": "Mohanty",
-            "photo": "http://www.bothsidesofthetable.com/wp-content/uploads/2012/12/young-employee-955x1024.jpg",
-            "designation" : "Associate",
-            "location": "Northriding",
-            "email" : "manmay.mohanty@reverside.co.za",
-            "phone" : "0846860904"
-        },
-        {
-            "id": 1002,
-            "firstName" : "Karim",
-            "lastName": "Baig",
-            "photo": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTWfmgOhqz1cj9L8BI2skqmdaVpe_lPqEMChXZOSJWiXWVdZbOcuv0dPQ",
-            "designation" : "Associate Consultant",
-            "location": "Northriding",
-            "email" : "manmay.mohanty@reverside.co.za",
-            "phone" : "0846860904"
-        },
-        {
-            "id": 1002,
-            "firstName" : "Ritimugdha",
-            "lastName": "Das",
-            "photo": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT5zfdu0lUOKbb1nTLBmg2a7yO3O5eYvmbMW59Ofva4iNvhhhctT5TjlOg",
-            "designation" : "Associate Consultant",
-            "location": "Northriding",
-            "email" : "manmay.mohanty@reverside.co.za",
-            "phone" : "0846860904"
+    $scope.init = function(){
+        console.log("[init] searchEmployeeCtrl");
+        if($rootScope.employees == undefined){
+            $scope.getEmployeeList();
         }
+    };
 
-    ];
+    $scope.getEmployeeList = function(){
+        console.log("[getEmployeeList] searchEmployeeCtrl");
+        $scope.progress = true;
+        $http({
+            method : "GET",
+            url: "http://localhost:9090/api/employees",
+            headers : {
+                "Accept" : "application/json"
+            }
+        }).success(function(data, status){
+            console.log('get employee list success');
+            $scope.progress = false;
+            $rootScope.employees = data;
+            $rootScope.message = "Get Employee List Success";
+        }).error(function(error, status){
+            $scope.progress = false;
+            console.log('get employee list error : ' + error);
+            $rootScope.message = "Error : " + error;
+        });
+
+    };
 
 });
 

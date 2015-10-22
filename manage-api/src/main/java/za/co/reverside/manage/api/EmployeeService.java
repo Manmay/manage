@@ -6,6 +6,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import java.security.Principal;
 import java.util.Date;
 import java.util.List;
+import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import za.co.reverside.manage.model.api.EmployeeQueryModel;
 import za.co.reverside.manage.model.api.EmployeeCommandModel;
+import za.co.reverside.manage.model.api.ProfileQueryModel;
 import za.co.reverside.manage.model.domain.Employee;
 import za.co.reverside.manage.repository.EmployeeRepository;
 
@@ -42,8 +44,21 @@ public class EmployeeService {
     }
 
     @RequestMapping(value = "api/employees", method = RequestMethod.GET)
-    public List<Employee> getEmployee(){
-        return employeeRepository.findAll();
+    public List<EmployeeQueryModel> getEmployee(){
+        List<EmployeeQueryModel> dataSet = new ArrayList();
+        List<Employee> employees =  employeeRepository.findAll();
+        for(Employee  employee : employees){
+            EmployeeQueryModel data = new EmployeeQueryModel();
+            data.setFirstName(employee.getFirstName());
+            data.setLastName(employee.getLastName());
+            data.setPhoto(employee.getPhoto());
+            data.setDesignation(employee.getDesignation());
+            data.setLocation(employee.getLocation());
+            data.setEmail(employee.getEmail());
+            data.setPhone(employee.getPhone());
+            dataSet.add(data);
+        }
+        return dataSet;
     }
 
     @RequestMapping(value = "api/employees/add", method = RequestMethod.POST, consumes = "application/json")
@@ -52,10 +67,10 @@ public class EmployeeService {
     }
     
     @RequestMapping(value = "api/employees/me", method = RequestMethod.GET, produces = "application/json")
-    public EmployeeQueryModel getEmployee(Principal principal){
+    public ProfileQueryModel getProfile(Principal principal){
     	String employeeEmail = principal.getName();
         Employee employee = employeeRepository.findByEmail(employeeEmail);
-        EmployeeQueryModel data = new EmployeeQueryModel();
+        ProfileQueryModel data = new ProfileQueryModel();
         data.setFullName(employee.getFirstName()+" "+ employee.getLastName());
         data.setEmail(employee.getEmail());
         data.setPhoto(employee.getPhoto());
