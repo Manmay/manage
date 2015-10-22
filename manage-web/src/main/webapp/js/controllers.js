@@ -93,6 +93,7 @@ app.controller('profileCtrl', function ($scope, $rootScope, $http) {
 
     $scope.submit = function(form){
         console.log('update profile');
+        console.log(form);
         if(!form.$invalid){
             console.log($scope.employee);
             var employee = {};
